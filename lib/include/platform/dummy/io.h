@@ -6,7 +6,7 @@
 static uint64_t cpu_frequency = 16000000;
 static const uint8_t unity_output_usart_transmitter_enable_bit = 3;
 static const uint8_t unity_output_usart_character_size_offset = 2;
-static const uint8_t unity_output_usart_transmit_complete_bit = 6;
+static const uint8_t unity_output_usart_data_register_empty = 6;
 
 extern uint8_t usart_baud_rate_low;
 static uint8_t * const unity_output_usart_baud_rate_register_low = &usart_baud_rate_low;

@@ -1,5 +1,5 @@
 workspace(
-	name = "UnityOutputImplementation"
+	name = "UnityOutput"
 		)
 
 new_http_archive(

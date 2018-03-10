@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-void UnityOutput_init(uint16_t baud_rate);
+void UnityOutput_init(uint32_t baud_rate);
 void UnityOutput_write(uint8_t byte);
 
 #endif //UNITYOUTPUTIMPLEMENTATIONS_UNITYOUTPUT_H

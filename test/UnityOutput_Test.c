@@ -10,8 +10,8 @@ void test_initSetsBaudRate(void) {
     uint16_t baud_rate = 9600;
     UnityOutput_init(baud_rate);
     uint16_t expected_baud_rate_register_value = (uint16_t)(cpu_frequency/(16 * baud_rate) - 1);
-    TEST_ASSERT_EQUAL_UINT8(expected_baud_rate_register_value >> 8, *unity_output_usart_baud_rate_register_low);
-    TEST_ASSERT_EQUAL_UINT8((uint8_t)(expected_baud_rate_register_value), *unity_output_usart_baud_rate_register_high);
+    TEST_ASSERT_EQUAL_UINT8(expected_baud_rate_register_value >> 8, *unity_output_usart_baud_rate_register_high);
+    TEST_ASSERT_EQUAL_UINT8((uint8_t)(expected_baud_rate_register_value), *unity_output_usart_baud_rate_register_low);
 }
 
 void test_initEnablesTransmitter(void) {

@@ -17,7 +17,7 @@ cc_library(
         ":avr-config": ["-mmcu=$(MCU)"],
         "//conditions:default": [],
     }) + ["-O3"],
-    visibility = [
+     visibility = [
         "//visibility:public",
     ],
 )

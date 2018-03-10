@@ -2,12 +2,12 @@
 #include "lib/include/platform/io.h"
 #include <stdbool.h>
 
-static void setBaudRate(uint16_t baud_rate);
+static void setBaudRate(uint32_t baud_rate);
 static void enableTransmitter(void);
 static void set8BitCharacterSize(void);
 static bool notReady(void);
 
-void UnityOutput_init(uint16_t baud_rate) {
+void UnityOutput_init(uint32_t baud_rate) {
     setBaudRate(baud_rate);
     enableTransmitter();
     set8BitCharacterSize();
@@ -18,10 +18,10 @@ void UnityOutput_write(uint8_t byte) {
     *unity_output_usart_data_register = byte;
 }
 
-void setBaudRate(uint16_t baud_rate) {
-    uint16_t baud_rate_register_value = (uint16_t)(cpu_frequency/(16*baud_rate) - 1);
-    *unity_output_usart_baud_rate_register_low = (uint8_t) (baud_rate_register_value >> 8);
-    *unity_output_usart_baud_rate_register_high = (uint8_t) baud_rate_register_value;
+void setBaudRate(uint32_t baud_rate) {
+    uint16_t baud_rate_register_value = (uint16_t)(cpu_frequency/16/baud_rate - 1);
+    *unity_output_usart_baud_rate_register_high = (uint8_t) (baud_rate_register_value >> 8);
+    *unity_output_usart_baud_rate_register_low = (uint8_t) baud_rate_register_value;
 }
 
 void enableTransmitter(void) {
@@ -34,6 +34,6 @@ void set8BitCharacterSize(void) {
 }
 
 bool notReady(void) {
-    return !(*unity_output_usart_control_and_status_register_a & (1 << unity_output_usart_transmit_complete_bit));
+    return !(*unity_output_usart_control_and_status_register_a & (1 << unity_output_usart_data_register_empty));
 
 }
