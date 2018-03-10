@@ -1,0 +1,7 @@
+test --test_output=errors
+
+build:328p --crosstool_top=@AVR_Toolchain//:toolchain
+build:328p --cpu=avr
+build:328p --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
+build:328p --define MCU=atmega328p
+build:328p --copt -DF_CPU=16000000
